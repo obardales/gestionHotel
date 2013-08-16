@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+<title>Módulo de Clinico</title>
+</h:head>
+<h:body>
+	<f:view>
+		<link rel="stylesheet" type="text/css" href="css/bg.css" />
+        <style type="text/css">
+            .ui-widget{font-size:90% !important;}
+            .ui-layout-unit-content{background-image:url('css/images/FONDO.png');}
+            .centeredPanel{
+		        position:absolute;
+		        left:43%;
+		        top:50%;
+		        margin-left:-25px;
+		        margin-top:-220px;
+    		}
+        </style>
+		<h:form style="text-align:center">
+			<p:layout fullPage="true">
+				<p:layoutUnit position="center">										
+					<div class="centeredPanel">
+						<p:panel header="Sistema Clinico" style="text-align:left; width:250px;" >
+					        <h:panelGrid columns="2">
+					            <h:outputText value="Usuario: " />
+					            <p:inputText id="idUsuario" value="" required="true" size="10" />
+					
+					            <h:outputText value="Contraseña: " />
+                                                    <p:password id="idPass" value="" required="true" size="15" requiredMessage="Ingrese Contraseña"/>	
+					            
+					            <p:column />
+					            <p:column />					           		
+					        </h:panelGrid>
+					        <p:commandButton id="logearBtn" value="Iniciar Sesión" icon="ui-icon-circle-check" style="margin:0" action="page-menuNotario" />
+					        <p:column />
+					        <br/>
+	    				</p:panel>
+    				</div>    													
+				</p:layoutUnit>
+			</p:layout>
+		</h:form>
+	</f:view>
+
+</h:body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRegistroCabTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_idregistroCab}" for="idregistroCab" />
+                    <h:inputText id="idregistroCab" value="#{registroCabController.selected.idregistroCab}" title="#{bundle.EditRegistroCabTitle_idregistroCab}" required="true" requiredMessage="#{bundle.EditRegistroCabRequiredMessage_idregistroCab}"/>
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{registroCabController.selected.fecha}" title="#{bundle.EditRegistroCabTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{registroCabController.selected.observacion}" title="#{bundle.EditRegistroCabTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{registroCabController.selected.estado}" title="#{bundle.EditRegistroCabTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_control}" for="control" />
+                    <h:inputText id="control" value="#{registroCabController.selected.control}" title="#{bundle.EditRegistroCabTitle_control}" />
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{registroCabController.selected.total}" title="#{bundle.EditRegistroCabTitle_total}" />
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_ruc}" for="ruc" />
+                    <h:selectOneMenu id="ruc" value="#{registroCabController.selected.ruc}" title="#{bundle.EditRegistroCabTitle_ruc}" required="true" requiredMessage="#{bundle.EditRegistroCabRequiredMessage_ruc}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRegistroCabLabel_idalmacen}" for="idalmacen" />
+                    <h:selectOneMenu id="idalmacen" value="#{registroCabController.selected.idalmacen}" title="#{bundle.EditRegistroCabTitle_idalmacen}" required="true" requiredMessage="#{bundle.EditRegistroCabRequiredMessage_idalmacen}">
+                        <f:selectItems value="#{almacenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{registroCabController.update}" value="#{bundle.EditRegistroCabSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRegistroCabViewLink}"/>
+                <br />
+                <h:commandLink action="#{registroCabController.prepareList}" value="#{bundle.EditRegistroCabShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRegistroCabIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

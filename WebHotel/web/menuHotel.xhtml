@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="frmMenu">
+        <f:view>
+            <!--p:panelMenu style="height:100%;width:100%;font-size:70%" expandedIcon="ui-icon-triangle-1-s" collapsedIcon="ui-icon-triangle-1-e"-->
+            <p:panelMenu style="height:100%;width:100%;font-size:70%">
+                <p:submenu label="Maestros" style="size:12">
+                    <p:menuitem  value="Almacen" icon="ui-icon-calculator" action="/paginas/maestros/almacen/List"  ajax="false"/>
+                </p:submenu>
+                <p:submenu label="Movimientos">
+                    <p:menuitem  value="Programa" icon="ui-icon-tag" action="/paginas/maeprograma/List"  ajax="false"/>
+                </p:submenu>														
+            </p:panelMenu>						
+        </f:view>
+    </h:form>
+</html>

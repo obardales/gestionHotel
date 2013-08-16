@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAseoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAseoLabel_idaseo}"/>
+                    <h:outputText value="#{aseoController.selected.idaseo}" title="#{bundle.ViewAseoTitle_idaseo}"/>
+                    <h:outputText value="#{bundle.ViewAseoLabel_descripcion}"/>
+                    <h:outputText value="#{aseoController.selected.descripcion}" title="#{bundle.ViewAseoTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewAseoLabel_estado}"/>
+                    <h:outputText value="#{aseoController.selected.estado}" title="#{bundle.ViewAseoTitle_estado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{aseoController.destroyAndView}" value="#{bundle.ViewAseoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAseoEditLink}"/>
+                <br />
+                <h:commandLink action="#{aseoController.prepareCreate}" value="#{bundle.ViewAseoCreateLink}" />
+                <br />
+                <h:commandLink action="#{aseoController.prepareList}" value="#{bundle.ViewAseoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAseoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

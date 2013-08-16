@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAutorizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_idautorizacion}" for="idautorizacion" />
+                    <h:inputText id="idautorizacion" value="#{autorizacionController.selected.idautorizacion}" title="#{bundle.EditAutorizacionTitle_idautorizacion}" required="true" requiredMessage="#{bundle.EditAutorizacionRequiredMessage_idautorizacion}"/>
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{autorizacionController.selected.fecha}" title="#{bundle.EditAutorizacionTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_fechaIni}" for="fechaIni" />
+                    <h:inputText id="fechaIni" value="#{autorizacionController.selected.fechaIni}" title="#{bundle.EditAutorizacionTitle_fechaIni}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_fechaSal}" for="fechaSal" />
+                    <h:inputText id="fechaSal" value="#{autorizacionController.selected.fechaSal}" title="#{bundle.EditAutorizacionTitle_fechaSal}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_empresa}" for="empresa" />
+                    <h:inputText id="empresa" value="#{autorizacionController.selected.empresa}" title="#{bundle.EditAutorizacionTitle_empresa}" />
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{autorizacionController.selected.total}" title="#{bundle.EditAutorizacionTitle_total}" />
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_pagos}" for="pagos" />
+                    <h:inputText id="pagos" value="#{autorizacionController.selected.pagos}" title="#{bundle.EditAutorizacionTitle_pagos}" />
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{autorizacionController.selected.estado}" title="#{bundle.EditAutorizacionTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{autorizacionController.selected.observacion}" title="#{bundle.EditAutorizacionTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{autorizacionController.selected.usuario}" title="#{bundle.EditAutorizacionTitle_usuario}" required="true" requiredMessage="#{bundle.EditAutorizacionRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_idmotivo}" for="idmotivo" />
+                    <h:selectOneMenu id="idmotivo" value="#{autorizacionController.selected.idmotivo}" title="#{bundle.EditAutorizacionTitle_idmotivo}" required="true" requiredMessage="#{bundle.EditAutorizacionRequiredMessage_idmotivo}">
+                        <f:selectItems value="#{motivoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_idhabitaciones}" for="idhabitaciones" />
+                    <h:selectOneMenu id="idhabitaciones" value="#{autorizacionController.selected.idhabitaciones}" title="#{bundle.EditAutorizacionTitle_idhabitaciones}" required="true" requiredMessage="#{bundle.EditAutorizacionRequiredMessage_idhabitaciones}">
+                        <f:selectItems value="#{habitacionesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditAutorizacionLabel_idcliente}" for="idcliente" />
+                    <h:selectOneMenu id="idcliente" value="#{autorizacionController.selected.idcliente}" title="#{bundle.EditAutorizacionTitle_idcliente}" required="true" requiredMessage="#{bundle.EditAutorizacionRequiredMessage_idcliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{autorizacionController.update}" value="#{bundle.EditAutorizacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAutorizacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{autorizacionController.prepareList}" value="#{bundle.EditAutorizacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAutorizacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

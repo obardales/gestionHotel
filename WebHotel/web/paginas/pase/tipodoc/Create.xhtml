@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipodocTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipodocLabel_idtipodoc}" for="idtipodoc" />
+                    <h:inputText id="idtipodoc" value="#{tipodocController.selected.idtipodoc}" title="#{bundle.CreateTipodocTitle_idtipodoc}" required="true" requiredMessage="#{bundle.CreateTipodocRequiredMessage_idtipodoc}"/>
+                    <h:outputLabel value="#{bundle.CreateTipodocLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{tipodocController.selected.descripcion}" title="#{bundle.CreateTipodocTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.CreateTipodocLabel_corto}" for="corto" />
+                    <h:inputText id="corto" value="#{tipodocController.selected.corto}" title="#{bundle.CreateTipodocTitle_corto}" />
+                    <h:outputLabel value="#{bundle.CreateTipodocLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{tipodocController.selected.estado}" title="#{bundle.CreateTipodocTitle_estado}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipodocController.create}" value="#{bundle.CreateTipodocSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipodocController.prepareList}" value="#{bundle.CreateTipodocShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipodocIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

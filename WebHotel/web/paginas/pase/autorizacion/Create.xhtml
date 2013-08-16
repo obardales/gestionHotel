@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAutorizacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_idautorizacion}" for="idautorizacion" />
+                    <h:inputText id="idautorizacion" value="#{autorizacionController.selected.idautorizacion}" title="#{bundle.CreateAutorizacionTitle_idautorizacion}" required="true" requiredMessage="#{bundle.CreateAutorizacionRequiredMessage_idautorizacion}"/>
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{autorizacionController.selected.fecha}" title="#{bundle.CreateAutorizacionTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_fechaIni}" for="fechaIni" />
+                    <h:inputText id="fechaIni" value="#{autorizacionController.selected.fechaIni}" title="#{bundle.CreateAutorizacionTitle_fechaIni}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_fechaSal}" for="fechaSal" />
+                    <h:inputText id="fechaSal" value="#{autorizacionController.selected.fechaSal}" title="#{bundle.CreateAutorizacionTitle_fechaSal}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_empresa}" for="empresa" />
+                    <h:inputText id="empresa" value="#{autorizacionController.selected.empresa}" title="#{bundle.CreateAutorizacionTitle_empresa}" />
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{autorizacionController.selected.total}" title="#{bundle.CreateAutorizacionTitle_total}" />
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_pagos}" for="pagos" />
+                    <h:inputText id="pagos" value="#{autorizacionController.selected.pagos}" title="#{bundle.CreateAutorizacionTitle_pagos}" />
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{autorizacionController.selected.estado}" title="#{bundle.CreateAutorizacionTitle_estado}" />
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{autorizacionController.selected.observacion}" title="#{bundle.CreateAutorizacionTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{autorizacionController.selected.usuario}" title="#{bundle.CreateAutorizacionTitle_usuario}" required="true" requiredMessage="#{bundle.CreateAutorizacionRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_idmotivo}" for="idmotivo" />
+                    <h:selectOneMenu id="idmotivo" value="#{autorizacionController.selected.idmotivo}" title="#{bundle.CreateAutorizacionTitle_idmotivo}" required="true" requiredMessage="#{bundle.CreateAutorizacionRequiredMessage_idmotivo}">
+                        <f:selectItems value="#{motivoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_idhabitaciones}" for="idhabitaciones" />
+                    <h:selectOneMenu id="idhabitaciones" value="#{autorizacionController.selected.idhabitaciones}" title="#{bundle.CreateAutorizacionTitle_idhabitaciones}" required="true" requiredMessage="#{bundle.CreateAutorizacionRequiredMessage_idhabitaciones}">
+                        <f:selectItems value="#{habitacionesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAutorizacionLabel_idcliente}" for="idcliente" />
+                    <h:selectOneMenu id="idcliente" value="#{autorizacionController.selected.idcliente}" title="#{bundle.CreateAutorizacionTitle_idcliente}" required="true" requiredMessage="#{bundle.CreateAutorizacionRequiredMessage_idcliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{autorizacionController.create}" value="#{bundle.CreateAutorizacionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{autorizacionController.prepareList}" value="#{bundle.CreateAutorizacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAutorizacionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRegistroCabTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_idregistroCab}" for="idregistroCab" />
+                    <h:inputText id="idregistroCab" value="#{registroCabController.selected.idregistroCab}" title="#{bundle.CreateRegistroCabTitle_idregistroCab}" required="true" requiredMessage="#{bundle.CreateRegistroCabRequiredMessage_idregistroCab}"/>
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{registroCabController.selected.fecha}" title="#{bundle.CreateRegistroCabTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{registroCabController.selected.observacion}" title="#{bundle.CreateRegistroCabTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{registroCabController.selected.estado}" title="#{bundle.CreateRegistroCabTitle_estado}" />
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_control}" for="control" />
+                    <h:inputText id="control" value="#{registroCabController.selected.control}" title="#{bundle.CreateRegistroCabTitle_control}" />
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{registroCabController.selected.total}" title="#{bundle.CreateRegistroCabTitle_total}" />
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_ruc}" for="ruc" />
+                    <h:selectOneMenu id="ruc" value="#{registroCabController.selected.ruc}" title="#{bundle.CreateRegistroCabTitle_ruc}" required="true" requiredMessage="#{bundle.CreateRegistroCabRequiredMessage_ruc}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRegistroCabLabel_idalmacen}" for="idalmacen" />
+                    <h:selectOneMenu id="idalmacen" value="#{registroCabController.selected.idalmacen}" title="#{bundle.CreateRegistroCabTitle_idalmacen}" required="true" requiredMessage="#{bundle.CreateRegistroCabRequiredMessage_idalmacen}">
+                        <f:selectItems value="#{almacenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{registroCabController.create}" value="#{bundle.CreateRegistroCabSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{registroCabController.prepareList}" value="#{bundle.CreateRegistroCabShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRegistroCabIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

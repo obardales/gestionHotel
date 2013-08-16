@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMotivoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMotivoEmpty}" rendered="#{motivoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{motivoController.items.rowCount > 0}">
+                    <h:outputText value="#{motivoController.pagination.pageFirstItem + 1}..#{motivoController.pagination.pageLastItem + 1}/#{motivoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{motivoController.previous}" value="#{bundle.Previous} #{motivoController.pagination.pageSize}" rendered="#{motivoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{motivoController.next}" value="#{bundle.Next} #{motivoController.pagination.pageSize}" rendered="#{motivoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{motivoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotivoTitle_idmotivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idmotivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotivoTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMotivoTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{motivoController.prepareView}" value="#{bundle.ListMotivoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{motivoController.prepareEdit}" value="#{bundle.ListMotivoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{motivoController.destroy}" value="#{bundle.ListMotivoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{motivoController.prepareCreate}" value="#{bundle.ListMotivoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMotivoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

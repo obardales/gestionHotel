@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewHabitacionesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_idhabitaciones}"/>
+                    <h:outputText value="#{habitacionesController.selected.idhabitaciones}" title="#{bundle.ViewHabitacionesTitle_idhabitaciones}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_numero}"/>
+                    <h:outputText value="#{habitacionesController.selected.numero}" title="#{bundle.ViewHabitacionesTitle_numero}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_descripcion}"/>
+                    <h:outputText value="#{habitacionesController.selected.descripcion}" title="#{bundle.ViewHabitacionesTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_camas}"/>
+                    <h:outputText value="#{habitacionesController.selected.camas}" title="#{bundle.ViewHabitacionesTitle_camas}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_mascamas}"/>
+                    <h:outputText value="#{habitacionesController.selected.mascamas}" title="#{bundle.ViewHabitacionesTitle_mascamas}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_precio}"/>
+                    <h:outputText value="#{habitacionesController.selected.precio}" title="#{bundle.ViewHabitacionesTitle_precio}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_idautorizacion}"/>
+                    <h:outputText value="#{habitacionesController.selected.idautorizacion}" title="#{bundle.ViewHabitacionesTitle_idautorizacion}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_idhabitacionTipo}"/>
+                    <h:outputText value="#{habitacionesController.selected.idhabitacionTipo}" title="#{bundle.ViewHabitacionesTitle_idhabitacionTipo}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_idhabitacionEstado}"/>
+                    <h:outputText value="#{habitacionesController.selected.idhabitacionEstado}" title="#{bundle.ViewHabitacionesTitle_idhabitacionEstado}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_idaseo}"/>
+                    <h:outputText value="#{habitacionesController.selected.idaseo}" title="#{bundle.ViewHabitacionesTitle_idaseo}"/>
+                    <h:outputText value="#{bundle.ViewHabitacionesLabel_idpiso}"/>
+                    <h:outputText value="#{habitacionesController.selected.idpiso}" title="#{bundle.ViewHabitacionesTitle_idpiso}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{habitacionesController.destroyAndView}" value="#{bundle.ViewHabitacionesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewHabitacionesEditLink}"/>
+                <br />
+                <h:commandLink action="#{habitacionesController.prepareCreate}" value="#{bundle.ViewHabitacionesCreateLink}" />
+                <br />
+                <h:commandLink action="#{habitacionesController.prepareList}" value="#{bundle.ViewHabitacionesShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewHabitacionesIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

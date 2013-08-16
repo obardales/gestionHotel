@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditHabitacionesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_idhabitaciones}" for="idhabitaciones" />
+                    <h:inputText id="idhabitaciones" value="#{habitacionesController.selected.idhabitaciones}" title="#{bundle.EditHabitacionesTitle_idhabitaciones}" required="true" requiredMessage="#{bundle.EditHabitacionesRequiredMessage_idhabitaciones}"/>
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_numero}" for="numero" />
+                    <h:inputText id="numero" value="#{habitacionesController.selected.numero}" title="#{bundle.EditHabitacionesTitle_numero}" />
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{habitacionesController.selected.descripcion}" title="#{bundle.EditHabitacionesTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_camas}" for="camas" />
+                    <h:inputText id="camas" value="#{habitacionesController.selected.camas}" title="#{bundle.EditHabitacionesTitle_camas}" />
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_mascamas}" for="mascamas" />
+                    <h:inputText id="mascamas" value="#{habitacionesController.selected.mascamas}" title="#{bundle.EditHabitacionesTitle_mascamas}" />
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{habitacionesController.selected.precio}" title="#{bundle.EditHabitacionesTitle_precio}" />
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_idautorizacion}" for="idautorizacion" />
+                    <h:inputText id="idautorizacion" value="#{habitacionesController.selected.idautorizacion}" title="#{bundle.EditHabitacionesTitle_idautorizacion}" />
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_idhabitacionTipo}" for="idhabitacionTipo" />
+                    <h:selectOneMenu id="idhabitacionTipo" value="#{habitacionesController.selected.idhabitacionTipo}" title="#{bundle.EditHabitacionesTitle_idhabitacionTipo}" required="true" requiredMessage="#{bundle.EditHabitacionesRequiredMessage_idhabitacionTipo}">
+                        <f:selectItems value="#{habitacionTipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_idhabitacionEstado}" for="idhabitacionEstado" />
+                    <h:selectOneMenu id="idhabitacionEstado" value="#{habitacionesController.selected.idhabitacionEstado}" title="#{bundle.EditHabitacionesTitle_idhabitacionEstado}" required="true" requiredMessage="#{bundle.EditHabitacionesRequiredMessage_idhabitacionEstado}">
+                        <f:selectItems value="#{habitacionEstadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_idaseo}" for="idaseo" />
+                    <h:selectOneMenu id="idaseo" value="#{habitacionesController.selected.idaseo}" title="#{bundle.EditHabitacionesTitle_idaseo}" required="true" requiredMessage="#{bundle.EditHabitacionesRequiredMessage_idaseo}">
+                        <f:selectItems value="#{aseoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditHabitacionesLabel_idpiso}" for="idpiso" />
+                    <h:selectOneMenu id="idpiso" value="#{habitacionesController.selected.idpiso}" title="#{bundle.EditHabitacionesTitle_idpiso}" required="true" requiredMessage="#{bundle.EditHabitacionesRequiredMessage_idpiso}">
+                        <f:selectItems value="#{pisoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{habitacionesController.update}" value="#{bundle.EditHabitacionesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditHabitacionesViewLink}"/>
+                <br />
+                <h:commandLink action="#{habitacionesController.prepareList}" value="#{bundle.EditHabitacionesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditHabitacionesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

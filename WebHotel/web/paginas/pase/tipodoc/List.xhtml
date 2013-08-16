@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTipodocTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListTipodocEmpty}" rendered="#{tipodocController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{tipodocController.items.rowCount > 0}">
+                    <h:outputText value="#{tipodocController.pagination.pageFirstItem + 1}..#{tipodocController.pagination.pageLastItem + 1}/#{tipodocController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{tipodocController.previous}" value="#{bundle.Previous} #{tipodocController.pagination.pageSize}" rendered="#{tipodocController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{tipodocController.next}" value="#{bundle.Next} #{tipodocController.pagination.pageSize}" rendered="#{tipodocController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{tipodocController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipodocTitle_idtipodoc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtipodoc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipodocTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipodocTitle_corto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.corto}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTipodocTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{tipodocController.prepareView}" value="#{bundle.ListTipodocViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipodocController.prepareEdit}" value="#{bundle.ListTipodocEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{tipodocController.destroy}" value="#{bundle.ListTipodocDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{tipodocController.prepareCreate}" value="#{bundle.ListTipodocCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListTipodocIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

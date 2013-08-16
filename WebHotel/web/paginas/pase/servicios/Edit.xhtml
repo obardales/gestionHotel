@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditServiciosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditServiciosLabel_idservicios}" for="idservicios" />
+                    <h:inputText id="idservicios" value="#{serviciosController.selected.idservicios}" title="#{bundle.EditServiciosTitle_idservicios}" required="true" requiredMessage="#{bundle.EditServiciosRequiredMessage_idservicios}"/>
+                    <h:outputLabel value="#{bundle.EditServiciosLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{serviciosController.selected.descripcion}" title="#{bundle.EditServiciosTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditServiciosLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{serviciosController.selected.precio}" title="#{bundle.EditServiciosTitle_precio}" />
+                    <h:outputLabel value="#{bundle.EditServiciosLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{serviciosController.selected.estado}" title="#{bundle.EditServiciosTitle_estado}" />
+                </h:panelGrid>
+                <h:commandLink action="#{serviciosController.update}" value="#{bundle.EditServiciosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditServiciosViewLink}"/>
+                <br />
+                <h:commandLink action="#{serviciosController.prepareList}" value="#{bundle.EditServiciosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditServiciosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

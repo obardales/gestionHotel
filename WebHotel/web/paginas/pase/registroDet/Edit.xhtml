@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRegistroDetTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRegistroDetLabel_registroDetPK_orden}" for="registroDetPK_orden" />
+                    <h:inputText id="registroDetPK_orden" value="#{registroDetController.selected.registroDetPK.orden}" title="#{bundle.EditRegistroDetTitle_registroDetPK_orden}" required="true" requiredMessage="#{bundle.EditRegistroDetRequiredMessage_registroDetPK_orden}"/>
+                    <h:outputLabel value="#{bundle.EditRegistroDetLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{registroDetController.selected.cantidad}" title="#{bundle.EditRegistroDetTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.EditRegistroDetLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{registroDetController.selected.precio}" title="#{bundle.EditRegistroDetTitle_precio}" />
+                    <h:outputLabel value="#{bundle.EditRegistroDetLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{registroDetController.selected.total}" title="#{bundle.EditRegistroDetTitle_total}" />
+                    <h:outputLabel value="#{bundle.EditRegistroDetLabel_idservicios}" for="idservicios" />
+                    <h:selectOneMenu id="idservicios" value="#{registroDetController.selected.idservicios}" title="#{bundle.EditRegistroDetTitle_idservicios}" required="true" requiredMessage="#{bundle.EditRegistroDetRequiredMessage_idservicios}">
+                        <f:selectItems value="#{serviciosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRegistroDetLabel_registroCab}" for="registroCab" />
+                    <h:selectOneMenu id="registroCab" value="#{registroDetController.selected.registroCab}" title="#{bundle.EditRegistroDetTitle_registroCab}" required="true" requiredMessage="#{bundle.EditRegistroDetRequiredMessage_registroCab}">
+                        <f:selectItems value="#{registroCabController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{registroDetController.update}" value="#{bundle.EditRegistroDetSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRegistroDetViewLink}"/>
+                <br />
+                <h:commandLink action="#{registroDetController.prepareList}" value="#{bundle.EditRegistroDetShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRegistroDetIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateOrdenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_ordenPK_idorden}" for="ordenPK_idorden" />
+                    <h:inputText id="ordenPK_idorden" value="#{ordenController.selected.ordenPK.idorden}" title="#{bundle.CreateOrdenTitle_ordenPK_idorden}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_ordenPK_idorden}"/>
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_comanda}" for="comanda" />
+                    <h:inputText id="comanda" value="#{ordenController.selected.comanda}" title="#{bundle.CreateOrdenTitle_comanda}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{ordenController.selected.fecha}" title="#{bundle.CreateOrdenTitle_fecha}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{ordenController.selected.precio}" title="#{bundle.CreateOrdenTitle_precio}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{ordenController.selected.cantidad}" title="#{bundle.CreateOrdenTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{ordenController.selected.total}" title="#{bundle.CreateOrdenTitle_total}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{ordenController.selected.observacion}" title="#{bundle.CreateOrdenTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{ordenController.selected.estado}" title="#{bundle.CreateOrdenTitle_estado}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{ordenController.selected.usuario}" title="#{bundle.CreateOrdenTitle_usuario}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_correlativo}" for="correlativo" />
+                    <h:inputText id="correlativo" value="#{ordenController.selected.correlativo}" title="#{bundle.CreateOrdenTitle_correlativo}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_mozo}" for="mozo" />
+                    <h:inputText id="mozo" value="#{ordenController.selected.mozo}" title="#{bundle.CreateOrdenTitle_mozo}" />
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_idservicios}" for="idservicios" />
+                    <h:selectOneMenu id="idservicios" value="#{ordenController.selected.idservicios}" title="#{bundle.CreateOrdenTitle_idservicios}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_idservicios}">
+                        <f:selectItems value="#{serviciosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateOrdenLabel_autorizacion}" for="autorizacion" />
+                    <h:selectOneMenu id="autorizacion" value="#{ordenController.selected.autorizacion}" title="#{bundle.CreateOrdenTitle_autorizacion}" required="true" requiredMessage="#{bundle.CreateOrdenRequiredMessage_autorizacion}">
+                        <f:selectItems value="#{autorizacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{ordenController.create}" value="#{bundle.CreateOrdenSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{ordenController.prepareList}" value="#{bundle.CreateOrdenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateOrdenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

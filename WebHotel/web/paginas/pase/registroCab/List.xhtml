@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRegistroCabTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRegistroCabEmpty}" rendered="#{registroCabController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{registroCabController.items.rowCount > 0}">
+                    <h:outputText value="#{registroCabController.pagination.pageFirstItem + 1}..#{registroCabController.pagination.pageLastItem + 1}/#{registroCabController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{registroCabController.previous}" value="#{bundle.Previous} #{registroCabController.pagination.pageSize}" rendered="#{registroCabController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{registroCabController.next}" value="#{bundle.Next} #{registroCabController.pagination.pageSize}" rendered="#{registroCabController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{registroCabController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_idregistroCab}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idregistroCab}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_observacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_control}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.control}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_total}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.total}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_ruc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ruc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRegistroCabTitle_idalmacen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idalmacen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{registroCabController.prepareView}" value="#{bundle.ListRegistroCabViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{registroCabController.prepareEdit}" value="#{bundle.ListRegistroCabEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{registroCabController.destroy}" value="#{bundle.ListRegistroCabDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{registroCabController.prepareCreate}" value="#{bundle.ListRegistroCabCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRegistroCabIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
